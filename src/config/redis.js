@@ -9,9 +9,8 @@ const redis = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-// Verificación de conexión al inicio
 redis.ping()
-  .then(() => console.log('✅ [Redis] Conexión a Upstash establecida correctamente'))
-  .catch((err) => console.error('❌ [Redis] Error al conectar con Upstash:', err.message));
+  .then(() => console.log('Conexión a Upstash bien'))
+  .catch((err) => console.error('Error al conectar con Upstash:', err.message));
 
 export default redis;

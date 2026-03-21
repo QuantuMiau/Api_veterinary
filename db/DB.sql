@@ -1284,4 +1284,4 @@ CALL sp_new_supply('Jeringa 5ml',             12, 0, 200);
 
 -- pass admin123
 INSERT INTO "Employees" (first_name, last_name, mother_name, email, phone, password, role, status)
-VALUES ('Admin', 'Sistema', 'General', 'admin@example.com', '0000000000', '$2b$10$i1bBwUxMmlHs3m4OsVuwkehXUziNMclXMuq4DMFy2sJFm6E4IhCU2', 'Administrador', TRUE);
+VALUES ('Admin', 'Sistema', 'General', 'admin@example.com', '0000000000', '$2b$10$i1bBwUxMmlHs3m4OsVuwkehXUziNMclXMuq4DMFy2sJFm6E4IhCU2', 'Admin', TRUE);

@@ -17,11 +17,11 @@ const pool = new Pool({
 pool
   .connect()
   .then((client) => {
-    console.log("✅ Conexión a la DB exitosa");
+    console.log("Conexión a la DB exitosa");
     client.release();
   })
   .catch((err) => {
-    console.error("❌ Error al conectar a la DB:", err);
+    console.error("Error al conectar a la DB:", err);
   });
 
 export default pool;
