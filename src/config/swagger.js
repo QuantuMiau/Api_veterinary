@@ -12,7 +12,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`,
       },
     ],
     components: {
@@ -32,5 +32,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 export function swaggerDocs(app) {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-  console.log("Swagger en: http://localhost:3000/api-docs");
+
+  const url = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+  console.log(`Swagger en: ${url}/api-docs`);
 }
