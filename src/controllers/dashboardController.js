@@ -49,11 +49,27 @@ export const getStats = async (req, res) => {
     `;
     const productsResult = await pool.query(productsQuery);
 
+    // 5. Métricas Generales (Cards)
+    const todaySalesQuery = 'SELECT COALESCE(SUM(amount), 0)::float as value FROM "Sales" WHERE date::date = CURRENT_DATE';
+    const totalClientsQuery = 'SELECT COUNT(*)::int as value FROM "Clients"';
+    const totalPatientsQuery = 'SELECT COUNT(*)::int as value FROM "Patients"';
+
+    const [todaySalesRes, totalClientsRes, totalPatientsRes] = await Promise.all([
+      pool.query(todaySalesQuery),
+      pool.query(totalClientsQuery),
+      pool.query(totalPatientsQuery)
+    ]);
+
     res.json({
       species: speciesResult.rows,
       monthlySales: monthlySalesResult.rows,
       sourceSales: sourceSales,
-      topProducts: productsResult.rows
+      topProducts: productsResult.rows,
+      metrics: {
+        todaySales: todaySalesRes.rows[0].value,
+        totalClients: totalClientsRes.rows[0].value,
+        totalPatients: totalPatientsRes.rows[0].value
+      }
     });
   } catch (error) {
     console.error("Error in getStats:", error);
