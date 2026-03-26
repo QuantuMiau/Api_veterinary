@@ -17,6 +17,7 @@ import creditRoutes from "./routes/creditRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import clinicalRecordRoutes from "./routes/clinicalRecordRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import connectMongoDB from "./config/db-mongo.js";
 
 dotenv.config();
@@ -48,6 +49,7 @@ app.use("/sale", saleRoutes);
 app.use("/credit", creditRoutes);
 app.use("/appointment", appointmentRoutes);
 app.use("/clinical-record", clinicalRecordRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 
 // swagger 
